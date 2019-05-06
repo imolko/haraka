@@ -74,6 +74,7 @@ RUN set -x && \
     haraka -install "$HARAKA_HOME"
 
 # Instalamos cliente bash para rabbitmq
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN set -x && apt-get update && apt-get install -y amqp-tools --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 ENV HOME "$HARAKA_HOME"
