@@ -10,36 +10,12 @@ ENV HOME /tmp
 
 # Versiones de las dependencias.
 ENV HARAKA_VERSION 2.8.4
-ENV LODASH_VERSION 3.10.1
-ENV FOMATTO_VERSION 0.5.0
-ENV NODE_INSPECTOR_VERSION 0.12.5
-ENV GEARMANODE_VERSION 0.9.1
-ENV GEARMANODE_FIX_VERSION git://github.com/veny/GearmaNode.git#1fdb141ebfed0f2688d85c58b2238f82eb9ea8ad
-ENV MAXANT_RULES_VERSION 2.1.3
-ENV MONGO_VERSION 3.0.11
-ENV WINSTON_VERSION "^0.7.1"
 
 #     npm install -g "node-inspector@$NODE_INSPECTOR_VERSION" && \
 
 # Dependencias de tarishi en nodejs.
 RUN set -x && \
     npm install -g "Haraka@$HARAKA_VERSION" && \
-    npm install -g "lodash@$LODASH_VERSION" && \
-    npm install -g "fomatto@$FOMATTO_VERSION" && \
-    npm install -g "maxant-rules@$MAXANT_RULES_VERSION" && \
-    npm install -g "mongodb@${MONGO_VERSION}" && \
-    npm install -g "winston@${WINSTON_VERSION}" && \
-    set +x && \
-    echo "[INFO] Intentaremos instalar varias versiones de gearmanode, estamos a la espera de la version $GEARMANODE_VERSION" && \
-    ( \
-        false \
-        || npm install -g gearmanode@$GEARMANODE_VERSION \
-        || (echo "[WARNING] No se econtro gearmanode@$GEARMANODE_VERSION, intentamos instalar cualquier version mayor a $GEARMANODE_VERSION." && false) \
-        || npm install -g gearmanode@">=$GEARMANODE_VERSION" \
-        || (echo "[WARNING] No se econtro gearmanode@>=$GEARMANODE_VERSION, intentaremos instalar desde el master." && false ) \
-        || npm install -g $GEARMANODE_FIX_VERSION \
-    ) && \
-    set -x && \
     npm cache clean && \
     rm -rf /tmp/*
 
