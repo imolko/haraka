@@ -17,6 +17,7 @@ ENV GEARMANODE_VERSION 0.9.1
 ENV GEARMANODE_FIX_VERSION git://github.com/veny/GearmaNode.git#1fdb141ebfed0f2688d85c58b2238f82eb9ea8ad
 ENV MAXANT_RULES_VERSION 2.1.3
 ENV MONGO_VERSION 3.0.11
+ENV WINSTON_VERSION "^0.7.1"
 
 #     npm install -g "node-inspector@$NODE_INSPECTOR_VERSION" && \
 
@@ -27,6 +28,7 @@ RUN set -x && \
     npm install -g "fomatto@$FOMATTO_VERSION" && \
     npm install -g "maxant-rules@$MAXANT_RULES_VERSION" && \
     npm install -g "mongodb@${MONGO_VERSION}" && \
+    npm install -g "winston@${WINSTON_VERSION}" && \
     set +x && \
     echo "[INFO] Intentaremos instalar varias versiones de gearmanode, estamos a la espera de la version $GEARMANODE_VERSION" && \
     ( \
