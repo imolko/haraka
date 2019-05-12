@@ -33,7 +33,6 @@ RUN set -x && \
     echo "[INFO] Intentaremos instalar varias versiones de gearmanode, estamos a la espera de la version $GEARMANODE_VERSION" && \
     ( \
         false \
-        || npm install -g $GEARMANODE_FIX_VERSION \
         || npm install -g gearmanode@$GEARMANODE_VERSION \
         || (echo "[WARNING] No se econtro gearmanode@$GEARMANODE_VERSION, intentamos instalar cualquier version mayor a $GEARMANODE_VERSION." && false) \
         || npm install -g gearmanode@">=$GEARMANODE_VERSION" \
